@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import CommentList from './comments/CommentList';
 // import UseStateCount from './mapTest/UseStateCount';
-import MapKeyTest01 from './mapTest/MapKeyTest01';
-import Library from './components/Library';
+//import MapKeyTest01 from './mapTest/MapKeyTest01';
+import ExportTest from './ExportTest';
+//import Library from './components/Library';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +14,8 @@ root.render(
     {/* <App/> */}
     {/* <CommentList/> */}
     {/* <UseStateCount/> */}
-    <MapKeyTest01/>
-    <Library/>
+    {/* <MapKeyTest01/> */}
+    <ExportTest/>
   </>
 
 );
