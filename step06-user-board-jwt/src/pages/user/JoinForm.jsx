@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const JoinForm = () => {
   //
   const [member, setMember] = useState({
@@ -11,11 +13,11 @@ const JoinForm = () => {
     address: "",
   });
 
-    // 중복체크 결과 값을 저장 할 idCheckResult
-    const [idCheckResult , setIdCheckResult] = useState("");
+  // 중복체크 결과 값을 저장 할 idCheckResult
+  const [idCheckResult, setIdCheckResult] = useState("");
 
-    // 아이디 중복여부에 따른 css 를 적용하기 위해 상태 변수
-    const [isCheckResult , setIsCheckResult] = useState(false);
+  // 아이디 중복여부에 따른 css 를 적용하기 위해 상태 변수
+  const [isCheckResult, setIsCheckResult] = useState(false);
 
   //각 text 박스에 값이 변경되었을 때
   const changeValue = (e) => {
@@ -34,9 +36,9 @@ const JoinForm = () => {
         .then((res) => {
           //console.log(res);
           setIdCheckResult(res.data);
-          res.data==="중복입니다." ? setIsCheckResult(true) : setIsCheckResult(false);
-
-
+          res.data === "중복입니다"
+            ? setIsCheckResult(true)
+            : setIsCheckResult(false);
         })
         .catch((err) => {
           //실패
@@ -52,7 +54,29 @@ const JoinForm = () => {
   };
 
   //가입하기
-  const submitJoin = () => {};
+  const navigator = useNavigate();
+
+  const submitJoin = (e) => {
+    axios({
+      method: "POST",
+      url: "http://localhost:9000/members",
+      data: member,
+    })
+      .then((res) => {
+        console.log(res);
+        navigator("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        let errMessage = err.response.data.type + "\n";
+        errMessage += err.response.data.title + "\n";
+        errMessage += err.response.data.detail + "\n";
+        errMessage += err.response.data.status + "\n";
+        errMessage += err.response.data.instance + "\n";
+        errMessage += err.response.data.timestamp;
+        alert(errMessage);
+      });
+  };
 
   return (
     <>
@@ -61,7 +85,11 @@ const JoinForm = () => {
         <Form.Label htmlFor="id">아이디</Form.Label>
         <InputGroup className="mb-3">
           <Form.Control type="text" id="id" name="id" onChange={changeValue} />
-          <InputGroup.Text style={ isCheckResult ? {color: "red"} : {color: "blue" } } >{idCheckResult}</InputGroup.Text>
+          <InputGroup.Text
+            style={isCheckResult ? { color: "red" } : { color: "blue" }}
+          >
+            {idCheckResult}
+          </InputGroup.Text>
         </InputGroup>
         <Form.Label htmlFor="name">이름</Form.Label>
         <Form.Control
