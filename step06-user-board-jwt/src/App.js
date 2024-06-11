@@ -23,7 +23,7 @@ export function App() {
 
   //컴포넌트가 mount or update 될때 로그인 여부에 따른 상태값 변경
   useEffect(() => {
-    console.log("동작");
+    // console.log("동작");
     localStorage.getItem("id") != null
       ? setIsLoggedIn(true)
       : setIsLoggedIn(false);

@@ -16,7 +16,7 @@ const Home = () => {
       })
 
       .then((res) => {
-        setBoards(res.data);
+        setBoards(res.data); // state에서 관리되는 변수가 변경되어 update(re-rendering)
       })
 
       .catch((err) => {
@@ -35,7 +35,7 @@ const Home = () => {
       <h3>전체 게시물 입니다</h3>
       {/* <BoardItem /> */}
       {boards.map((board) => (
-        <BoardItem key={board.id} board={board} />
+        <BoardItem key={board.id} board1={board} />
     ))}    {/* boards의 길이만큼 반복해서 동작 */}
 
     </div>
