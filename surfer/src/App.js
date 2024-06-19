@@ -1,7 +1,7 @@
 import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
-import Result from "./pages/search/Result";
+import Search from "./pages/search/Search";
 function App() {
   return (
 
@@ -9,7 +9,7 @@ function App() {
     <div>
       <Container>
         <Routes>
-            <Route path="/result/:keyword" element={<Result/>} />
+            <Route path="/search/:keyword" element={<Search/>} />
           </Routes>
         <Footer/>
       </Container>

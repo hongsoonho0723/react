@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import "../../Result.css";
+import "../../Search.css";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 
-const Result = () => {
+const Search = () => {
 
     const { keyword } = useParams(); 
 
@@ -55,9 +55,22 @@ const Result = () => {
 
 
     return (
-        <div className='Result'>
+        <div className='Search'>
+            
             <h3>{keyword} 검색 결과</h3>
+            
+            <div>
             <h3>노래</h3>
+
+   {/* <BoardItem /> */}
+   
+    {/* {boards.map((board) => (
+        <BoardItem key={board.id} board1={board} />
+    ))}    {/* boards의 길이만큼 반복해서 동작 */}
+ 
+    */}
+
+            </div>
 
             <h3>앨범</h3>
 
@@ -69,4 +82,4 @@ const Result = () => {
     );
 };
 
-export default Result;
+export default Search;
