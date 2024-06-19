@@ -36,8 +36,8 @@ const Home = () => {
       {/* <BoardItem /> */}
       {boards.map((board) => (
         <BoardItem key={board.id} board1={board} />
-    ))}    {/* boards의 길이만큼 반복해서 동작 */}
-
+      ))}{" "}
+      {/* boards의 길이만큼 반복해서 동작 */}
     </div>
   );
 };
